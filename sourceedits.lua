@@ -22,5 +22,26 @@ sourceedits =
 			luapattern = false,
 			allowmultiple = false,
 		},
+		
+		--Concatenation of "chunks" is bugged; replacing doesn't seem to work right, always writes "$CONTENTS$" to VVVVVV file
+		
+		--{
+		--	find = [[savethis = savethis:gsub("%$CONTENTS%$", table.concat(thenewcontents, ",") .. ",")]],
+		--	replace = [[savethis = savethis:gsub("%$CONTENTS%$", table.concat(thenewcontents, "\n") .. "\n")]],
+		--	ignore_error = false,
+		--	luapattern = false,
+		--	allowmultiple = false,
+		--},
+	},
+	
+	["main2"] =
+	{
+		{
+			find = [[savedsuccess, savederror = savelevel(editingmap .. ".vvvvvv", metadata, roomdata, entitydata, levelmetadata, scripts, vedmetadata)]],
+			replace = [[savedsuccess, savederror = savelevel(editingmap .. ".vvvvvv", metadata, roomdata, entitydata, levelmetadata, scripts, vedmetadata, true)]],
+			ignore_error = false,
+			luapattern = false,
+			allowmultiple = false,
+		},
 	},
 }
