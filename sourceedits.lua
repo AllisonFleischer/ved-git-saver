@@ -7,8 +7,12 @@ sourceedits =
 			replace = [[function savelevel(path, thismetadata, theserooms, allentities, theselevelmetadata, allscripts, vedmetadata, isgit)
 				if isgit == true then
 					tileDelimiter = "\n"
+					scriptDelimiter = ":\n"
+					lineDelimiter = "\n"
 				else
 					tileDelimiter = ","
+					scriptDelimiter = ":|"
+					lineDelimiter = "|"
 				end]],
 		},
 		{
@@ -19,6 +23,10 @@ sourceedits =
 		{
 			find = [[table.concat(thenewcontents, ",") .. ",")]],
 			replace = [[table.concat(thenewcontents, tileDelimiter) .. tileDelimiter)]],
+		},
+		{
+			find = [[allallscripts = allallscripts .. xmlspecialchars(k) .. ":|" .. xmlspecialchars(implode("|", v)) .. "|"]],
+			replace = [[allallscripts = allallscripts .. xmlspecialchars(k) .. scriptDelimiter .. xmlspecialchars(implode(lineDelimiter, v)) .. lineDelimiter]],
 		},
 	},
 	
