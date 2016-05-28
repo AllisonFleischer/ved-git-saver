@@ -5,7 +5,6 @@ sourceedits =
 		{
 			find = [[function savelevel(path, thismetadata, theserooms, allentities, theselevelmetadata, allscripts, vedmetadata)]],
 			replace = [[function savelevel(path, thismetadata, theserooms, allentities, theselevelmetadata, allscripts, vedmetadata, isgit)
-				isgit = true
 				if isgit == true then
 					tileDelimiter = "\n"
 				else
@@ -27,7 +26,12 @@ sourceedits =
 	{
 		{
 			find = [[elseif nodialog and editingroomtext == 0 and editingroomname == false and (state == 1) and (key == "s") then]],
-			replace = [[elseif nodialog and editingroomtext == 0 and editingroomname == false and (state == 1) and ((key == "s") or (key == "g")) then]],
+			replace = [[elseif nodialog and editingroomtext == 0 and editingroomname == false and (state == 1) and ((key == "s") or (key == "g")) then
+				if key == "g" then
+					isgit = true
+				else
+					isgit = false
+				end]],
 		},
 		{
 			find = [[savedsuccess, savederror = savelevel(editingmap .. ".vvvvvv", metadata, roomdata, entitydata, levelmetadata, scripts, vedmetadata)]],
