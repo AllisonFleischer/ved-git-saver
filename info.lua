@@ -8,5 +8,8 @@ t.minimumved = "b6"
 t.description = [[
 Adds the ability to save your level in a git-friendly format, allowing for easier
 collaboration on levels.
+\-
+G: Save level in .gggggg format
+Ctrl+G: Quicksave .gggggg
 ]]
 t.overrideinfo = false

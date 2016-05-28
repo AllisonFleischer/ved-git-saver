@@ -9,6 +9,7 @@ sourceedits =
 					tileDelimiter = "\n"
 					scriptDelimiter = ":\n"
 					lineDelimiter = "\n"
+					alphabetizeScripts()
 				else
 					tileDelimiter = ","
 					scriptDelimiter = ":|"
