@@ -27,16 +27,25 @@ sourceedits =
 		{
 			find = [[elseif nodialog and editingroomtext == 0 and editingroomname == false and (state == 1) and (key == "s") then]],
 			replace = [[elseif nodialog and editingroomtext == 0 and editingroomname == false and (state == 1) and ((key == "s") or (key == "g")) then
-				if key == "g" then
-					isgit = true
-				else
+				if key == "s" then
 					isgit = false
+				else
+					isgit = true
 				end]],
 		},
 		{
 			find = [[savedsuccess, savederror = savelevel(editingmap .. ".vvvvvv", metadata, roomdata, entitydata, levelmetadata, scripts, vedmetadata)]],
-			replace = [[isgit = true
+			replace = [[
 			savedsuccess, savederror = savelevel(editingmap .. ".vvvvvv", metadata, roomdata, entitydata, levelmetadata, scripts, vedmetadata, isgit)]],
+		},
+		{
+			find = [[temporaryroomname = "Saved level as " .. editingmap .. ".vvvvvv"]],
+			replace = [[
+			if isgit == false then
+				temporaryroomname = "Saved level as " .. editingmap .. ".vvvvvv"
+			else
+				temporaryroomname = "Git save as " .. editingmap .. ".vvvvvv"
+			end]]
 		},
 	},
 }
