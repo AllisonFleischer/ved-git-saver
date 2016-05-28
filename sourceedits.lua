@@ -4,42 +4,35 @@ sourceedits =
 	{
 		{
 			find = [[function savelevel(path, thismetadata, theserooms, allentities, theselevelmetadata, allscripts, vedmetadata)]],
-			replace = [[function savelevel(path, thismetadata, theserooms, allentities, theselevelmetadata, allscripts, vedmetadata, isgit)]],
-			ignore_error = false,
-			luapattern = false,
-			allowmultiple = false,
+			replace = [[function savelevel(path, thismetadata, theserooms, allentities, theselevelmetadata, allscripts, vedmetadata, isgit)
+				isgit = true
+				if isgit == true then
+					tileDelimiter = "\n"
+				else
+					tileDelimiter = ","
+				end]],
 		},
 		{
 			find = [[table.insert(thenewcontents, table.concat({unpack(theserooms[lroomy][lroomx], (line*40)+1, (line*40)+40)}, ","))]],
-			replace = [[
-			if isgit == false then
-				table.insert(thenewcontents, table.concat({unpack(theserooms[lroomy][lroomx], (line*40)+1, (line*40)+40)}, ","))
-			else
-				table.insert(thenewcontents, table.concat({unpack(theserooms[lroomy][lroomx], (line*40)+1, (line*40)+40)}, "\n"))
-			end
-			]],
-			ignore_error = false,
-			luapattern = false,
-			allowmultiple = false,
+			replace = [[table.insert(thenewcontents, table.concat({unpack(theserooms[lroomy][lroomx], (line*40)+1, (line*40)+40)}, tileDelimiter))]],
 		},
 		
 		{
 			find = [[table.concat(thenewcontents, ",") .. ",")]],
-			replace = [[table.concat(thenewcontents, "\n") .. "\n")]],
-			ignore_error = false,
-			luapattern = false,
-			allowmultiple = false,
+			replace = [[table.concat(thenewcontents, tileDelimiter) .. tileDelimiter)]],
 		},
 	},
 	
 	["main2"] =
 	{
 		{
+			find = [[elseif nodialog and editingroomtext == 0 and editingroomname == false and (state == 1) and (key == "s") then]],
+			replace = [[elseif nodialog and editingroomtext == 0 and editingroomname == false and (state == 1) and ((key == "s") or (key == "g")) then]],
+		},
+		{
 			find = [[savedsuccess, savederror = savelevel(editingmap .. ".vvvvvv", metadata, roomdata, entitydata, levelmetadata, scripts, vedmetadata)]],
-			replace = [[savedsuccess, savederror = savelevel(editingmap .. ".vvvvvv", metadata, roomdata, entitydata, levelmetadata, scripts, vedmetadata, true)]],
-			ignore_error = false,
-			luapattern = false,
-			allowmultiple = false,
+			replace = [[isgit = true
+			savedsuccess, savederror = savelevel(editingmap .. ".vvvvvv", metadata, roomdata, entitydata, levelmetadata, scripts, vedmetadata, isgit)]],
 		},
 	},
 }
