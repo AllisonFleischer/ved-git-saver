@@ -58,5 +58,21 @@ sourceedits =
 				temporaryroomname = "Git save as " .. editingmap .. levelExtension
 			end]]
 		},
+		{
+			find = [[dialog.new(L.ENTERNAMESAVE .. "\n\n\n" .. L.ENTERLONGOPTNAME, "", 1, 4, 10)]],
+			replace = [[
+				if isgit == true then
+					temporaryroomname = "Git saving!"
+					temporaryroomnametimer = 999999
+				end
+				dialog.new(L.ENTERNAMESAVE .. "\n\n\n" .. L.ENTERLONGOPTNAME, "", 1, 4, 10)]],
+		},
+	},
+	["dialog"] =
+	{
+		{
+			find = [[savedsuccess, savederror = savelevel(multiinput[1] .. ".vvvvvv", metadata, roomdata, entitydata, levelmetadata, scripts, vedmetadata)]],
+			replace = [[savedsuccess, savederror = savelevel(multiinput[1] .. levelExtension, metadata, roomdata, entitydata, levelmetadata, scripts, vedmetadata, isgit)]],
+		},
 	},
 }
