@@ -29,6 +29,25 @@ sourceedits =
 			find = [[allallscripts = allallscripts .. xmlspecialchars(k) .. ":|" .. xmlspecialchars(implode("|", v)) .. "|"]],
 			replace = [[allallscripts = allallscripts .. xmlspecialchars(k) .. scriptDelimiter .. xmlspecialchars(implode(lineDelimiter, v)) .. lineDelimiter]],
 		},
+		{
+			find = [[if not success then
+		return false, contents
+	end]],
+			replace = [[if not success then
+		return false, contents
+	end
+				if string.find(path, "testlevelgit") then
+					gitload = true
+					tileLoadDelimiter = "\n"
+				else
+					gitload = false
+					tileLoadDelimiter = ","
+				end]],
+		},
+		{
+			find = [[,") do]],
+			replace = [[" .. tileLoadDelimiter) do]], --Just wanted to mention that figuring out this one line was a nightmare
+		},
 	},
 	
 	["main2"] =
