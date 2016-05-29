@@ -39,14 +39,20 @@ sourceedits =
 				if string.find(path, "testlevelgit") then
 					gitload = true
 					tileLoadDelimiter = "\n"
+					scriptLoadDelimiter = "\n"
 				else
 					gitload = false
 					tileLoadDelimiter = ","
+					scriptLoadDelimiter = "|"
 				end]],
 		},
 		{
 			find = [[,") do]],
 			replace = [[" .. tileLoadDelimiter) do]], --Just wanted to mention that figuring out this one line was a nightmare
+		},
+		{
+			find = [[x.allscripts = explode("|"]],
+			replace = [[x.allscripts = explode(scriptLoadDelimiter]],
 		},
 	},
 	
