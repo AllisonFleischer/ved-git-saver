@@ -74,5 +74,10 @@ sourceedits =
 			find = [[savedsuccess, savederror = savelevel(multiinput[1] .. ".vvvvvv", metadata, roomdata, entitydata, levelmetadata, scripts, vedmetadata)]],
 			replace = [[savedsuccess, savederror = savelevel(multiinput[1] .. levelExtension, metadata, roomdata, entitydata, levelmetadata, scripts, vedmetadata, isgit)]],
 		},
+		{
+			find = [[elseif (DIAquestionid == 10) then]],
+			replace = [[elseif (DIAquestionid == 10) then
+			temporaryroomnametimer = 0]],
+		},
 	},
 }
