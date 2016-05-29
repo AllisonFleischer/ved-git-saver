@@ -67,6 +67,18 @@ sourceedits =
 				end
 				dialog.new(L.ENTERNAMESAVE .. "\n\n\n" .. L.ENTERLONGOPTNAME, "", 1, 4, 10)]],
 		},
+		{
+			find = [[state6load(v:sub(1, -8))]],
+			replace = [[state6load(v:sub(1, -1))]], --Extension is no longer removed
+		},
+	},
+	["func"] =
+	{
+		{
+			find = [[success, metadata, roomdata, entitydata, levelmetadata, scripts, count, scriptnames, vedmetadata = loadlevel(editingmap .. ".vvvvvv")]],
+			replace = [[success, metadata, roomdata, entitydata, levelmetadata, scripts, count, scriptnames, vedmetadata = loadlevel(editingmap)
+			editingmap = levelname:sub(1,-8)]],
+		},
 	},
 	["dialog"] =
 	{
