@@ -36,7 +36,7 @@ sourceedits =
 			replace = [[if not success then
 		return false, contents
 	end
-				if string.find(path, "testlevelgit") then
+				if string.find(path, ".gggggg") then
 					gitload = true
 					tileLoadDelimiter = "\n"
 					scriptLoadDelimiter = "\n"
