@@ -54,9 +54,15 @@ sourceedits =
 			find = [[x.allscripts = explode("|"]],
 			replace = [[x.allscripts = explode(scriptLoadDelimiter]],
 		},
+		-- Flagnames set
 		{
 			find = [[mdedata = mdedata .. "$" .. despecialchars(vedmetadata.flaglabel[k])]],
 			replace = [[mdedata = mdedata .. "$\n" .. despecialchars(vedmetadata.flaglabel[k])]],
+		},
+		-- Flagnames get
+		{
+			find = [[local explodedflags = explode("%$", explodedmetadata[2])]],
+			replace = [[local explodedflags = explode("%$\n", explodedmetadata[2])]],
 		},
 	},
 	
