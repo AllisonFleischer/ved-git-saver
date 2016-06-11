@@ -4,7 +4,7 @@ t.shortname = "Git Saver"
 t.longname = "Git Saver"
 t.author = "crazya02"
 t.version = "1.2"
-t.minimumved = "b6"
+t.minimumved = "b7"
 t.description = [[
 Adds the ability to save your level in a git-friendly format, allowing for easier
 collaboration on levels.
