@@ -75,6 +75,11 @@ sourceedits =
 			find = [[mdedata = mdedata .. "|||"]],
 			replace = [[mdedata = mdedata .. flagEnd]],
 		},
+		-- SAVE NOTES:
+		{
+			find = [[table.insert(notesdata, despecialchars(v.subj) .. "@" .. despecialchars(v.cont))]],
+			replace = [[table.insert(notesdata, despecialchars(v.subj) .. noteStart .. despecialchars(v.cont))]],
+		},
 		-- Flagnames get
 		--{
 			--find = [[local explodedflags = explode("%$", explodedmetadata[2])]],
