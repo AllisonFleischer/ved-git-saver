@@ -9,19 +9,11 @@ sourceedits =
 					tileDelimiter = "\n"
 					scriptDelimiter = ":\n"
 					lineDelimiter = "\n"
-					flagDSDelimiter = "$\n"
-					flagBarDelimiter = "|\n"
-					flagEnd = "|||\n"
-					noteStart = "@\n"
 					alphabetizeScripts()
 				else
 					tileDelimiter = ","
 					scriptDelimiter = ":|"
 					lineDelimiter = "|"
-					flagDSDelimiter = "$"
-					flagBarDelimiter = "|"
-					flagEnd = "|||"
-					noteStart = "@"
 				end]],
 		},
 		{
@@ -62,29 +54,6 @@ sourceedits =
 			find = [[x.allscripts = explode("|"]],
 			replace = [[x.allscripts = explode(scriptLoadDelimiter]],
 		},
-		-- Flagnames set
-		{
-			find = [[mdedata = mdedata .. "$" .. despecialchars(vedmetadata.flaglabel[k])]],
-			replace = [[mdedata = mdedata .. flagDSDelimiter .. despecialchars(vedmetadata.flaglabel[k])]],
-		},
-		{
-			find = [[local mdedata = thismdeversion .. "|" .. despecialchars(vedmetadata.flaglabel[0])]],
-			replace = [[local mdedata = thismdeversion .. flagBarDelimiter .. despecialchars(vedmetadata.flaglabel[0])]],
-		},
-		{
-			find = [[mdedata = mdedata .. "|||"]],
-			replace = [[mdedata = mdedata .. flagEnd]],
-		},
-		-- SAVE NOTES:
-		{
-			find = [[table.insert(notesdata, despecialchars(v.subj) .. "@" .. despecialchars(v.cont))]],
-			replace = [[table.insert(notesdata, despecialchars(v.subj) .. noteStart .. despecialchars(v.cont))]],
-		},
-		-- Flagnames get
-		--{
-			--find = [[local explodedflags = explode("%$", explodedmetadata[2])]],
-			--replace = [[local explodedflags = explode("%$\n", explodedmetadata[2])]],
-		--},
 	},
 	
 	["main2"] =
