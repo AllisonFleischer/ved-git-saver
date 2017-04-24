@@ -20,7 +20,7 @@ sourceedits =
 			find = [[table.insert(thenewcontents, table.concat({unpack(theserooms[lroomy][lroomx], (line*40)+1, (line*40)+40)}, ","))]],
 			replace = [[table.insert(thenewcontents, table.concat({unpack(theserooms[lroomy][lroomx], (line*40)+1, (line*40)+40)}, tileDelimiter))]],
 		},
-		
+
 		{
 			find = [[table.concat(thenewcontents, ",") .. ",")]],
 			replace = [[table.concat(thenewcontents, tileDelimiter) .. tileDelimiter)]],
@@ -55,7 +55,7 @@ sourceedits =
 			replace = [[x.allscripts = explode(scriptLoadDelimiter]],
 		},
 	},
-	
+
 	["main2"] =
 	{
 		{
@@ -75,7 +75,7 @@ sourceedits =
 			savedsuccess, savederror = savelevel(editingmap .. levelExtension, metadata, roomdata, entitydata, levelmetadata, scripts, vedmetadata, isgit)]],
 		},
 		{
-			find = [[temporaryroomname = "Saved level as " .. editingmap .. ".vvvvvv"]],
+			find = [[temporaryroomname = langkeys(L.SAVEDLEVELAS, {editingmap})]],
 			replace = [[
 			if isgit == false then
 				temporaryroomname = "Saved level as " .. editingmap .. levelExtension
@@ -92,6 +92,9 @@ sourceedits =
 				end
 				dialog.new(L.ENTERNAMESAVE .. "\n\n\n" .. L.ENTERLONGOPTNAME, "", 1, 4, 10)]],
 		},
+	},
+	["drawlevelslist"] =
+	{
 		{
 			find = [[state6load(v:sub(1, -8))]],
 			replace = [[state6load(v:sub(1, -1))]], --Extension is no longer removed
